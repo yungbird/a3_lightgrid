@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+	<meta charset="UTF-8">
+	<title>LIGHTgrid - Quiz</title>
+  
+	<link href="https://fonts.googleapis.com/css?family=Krub|Oswald:200,400" rel="stylesheet">
+	
+	<link rel='stylesheet' href='http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+	<link rel="stylesheet" href="css/quiz-style.css">
+
+</head>
+
+<body>
+
+	<!-- 10 questions: 5 where a number is specified and users must find the colour, and 5 where a colour is specified and users must find the number
+	one is a trick question, showing users pink which does not appear on the EM spectrum-->
+	<h1>LIGHTgrid</h1>
+	<h2>QUIZ</h2>
+	<br/>
+	<br/>
+
+	<!-- Question containers. The HTML code in each question container contains a data entry for a correct answer, and an entry for a 'tolerance' - the range surrounding the correct answer within which an answer can still be considered correct. These data points are allocated in the HTML so they can be used to create a function in the site's jQuery code which allows the site to check if the user's answer is within the correct range or not. -->
+	<div class="question" id="q1" data-correct-ans='400' data-correct-ans-tolerance='50'>
+		<p>1. Which colour does the following wavelength produce?</p>
+		<h3>400nm</h3>
+		<br/>
+		<div class="spec-slider-container">
+			<div class="spec-slider" id="test"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q1next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<div class="question" id="q2" data-correct-ans='700' data-correct-ans-tolerance='50'>
+		<p>2. Which colour does the following wavelength produce?</p>
+		<h3>700nm</h3>
+		<br/>
+		<div class="spec-slider-container">
+			<div class="spec-slider" id="test"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q2next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<div class="question" id="q3" data-correct-ans='510' data-correct-ans-tolerance='30'>
+		<p>3. Which colour does the following wavelength produce?</p>
+		<h3>510nm</h3>
+		<br/>
+		<div class="spec-slider-container">
+			<div class="spec-slider" id="test"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q3next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<div class="question" id="q4" data-correct-ans='620' data-correct-ans-tolerance='20'>
+		<p>4. Which colour does the following wavelength produce?</p>
+		<h3>620nm</h3>
+		<br/>
+		<div class="spec-slider-container">
+			<div class="spec-slider" id="test"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q4next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<div class="question" id="q5" data-correct-ans='580' data-correct-ans-tolerance='10'>
+		<p>5. Which colour does the following wavelength produce?</p>
+		<h3>580nm</h3>
+		<br/>
+		<div class="spec-slider-container">
+			<div class="spec-slider" id="test"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q5next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<div class="question" id="q6" data-correct-ans='750' data-correct-ans-tolerance='50'>
+		<p>6. At which wavelength does the following colour occur?</p>
+		<div class="swatch" id="redSwatch"></div>
+		</br>
+		<div class="num-slider-container">
+			<div class="num-slider"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q6next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<div class="question" id="q7" data-correct-ans='590' data-correct-ans-tolerance='50'>
+		<p>7. At which wavelength does the following colour occur?</p>
+		<div class="swatch" id="yellowSwatch"></div>
+		</br>
+		<div class="num-slider-container">
+			<div class="num-slider"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q7next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<div class="question" id="q8" data-correct-ans='520' data-correct-ans-tolerance='30'>
+		<p>8. At which wavelength does the following colour occur?</p>
+		<div class="swatch" id="cyanSwatch"></div>
+		</br>
+		<div class="num-slider-container">
+			<div class="num-slider"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q8next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<div class="question" id="q9" data-correct-ans='600' data-correct-ans-tolerance='10'>
+		<p>9. At which wavelength does the following colour occur?</p>
+		<div class="swatch" id="goldSwatch"></div>
+		</br>
+		<div class="num-slider-container">
+			<div class="num-slider"></div>
+		</div>
+		<button class="submit-answer">Check Answer</button>
+		<button class="next" id="q9next">Next Question</button>
+		<div class="result"></div>
+	</div>
+
+	<!-- Elements in this container are named slightly differently, as this question behaves differently. Rather than popping up a 'correct' or 'incorrect', this question needs to state that it is a trick question, and explain itself after the user has tried to answer it. -->
+	<div class="question" id="q10">
+		<p>10. At which wavelength does the following colour occur?</p>
+		<div class="swatch" id="pinkSwatch"></div>
+		</br>
+		<div class="num-slider-container">
+			<div class="num-slider"></div>
+		</div>
+		<button class="q10submit">Check Answer</button>
+		<button class="viewScore">View Score</button>
+		<div class="q10result"></div>
+	  <!-- message: This is a trick question. Pink and magenta do not naturally occur on the visible light spectrum - rather, they're our eyes way of bridging the gap between red and violet. -->
+	  
+	</div>
+
+	<div id="scoreWrapper">
+		<p>Score: <span id="score">0</span></p>
+	</div>
+
+	<div class=scorePage>
+		<h2>Congratulations!</h2>
+		<br/>
+		<h2>Your score was:</h2>
+		<p class="endScore">0</p>
+		<div id="endButtonWrapper">
+			<button id="redo">Redo the quiz!</button>
+			<form method="post" action="../index.html">
+			<button id="back">Back to LIGHTgrid</button>
+			</form>
+		</div>
+	</div>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js'></script>
+		<script src="js/quiz.js"></script>
+
+</body>
+
+</html>
